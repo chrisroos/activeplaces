@@ -1,6 +1,5 @@
-data
-public/site-details
 config/database.yml
+data/downloads
 log/*
 tmp/*
 .svn

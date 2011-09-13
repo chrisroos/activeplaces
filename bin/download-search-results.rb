@@ -2,11 +2,15 @@ require File.join(File.dirname(__FILE__), '..', 'config', 'environment')
 require File.join(File.dirname(__FILE__), 'active_places_helper')
 include ActivePlacesHelper
 
-postcodes = []
-File.open(File.join(Rails.root, 'data', 'uk-postcode-outcodes.csv')) do |file|
-  file.each_with_index do |line, index|
-    next if index == 0 # ignore the first line
-    postcodes << line.split(',').first
+if postcodes = ENV['POSTCODES']
+  postcodes = postcodes.split(',')
+else
+  postcodes = []
+  File.open(File.join(SEED_DATA_DIR, 'uk-postcode-outcodes.csv')) do |file|
+    file.each_with_index do |line, index|
+      next if index == 0 # ignore the first line
+      postcodes << line.split(',').first
+    end
   end
 end
 

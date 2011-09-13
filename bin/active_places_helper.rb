@@ -4,10 +4,16 @@ module ActivePlacesHelper
   
   USER_AGENT = 'http://chrisroos.co.uk (chris@seagul.co.uk)'
   ACTIVE_PLACES_COOKIE_FILE = File.join(Rails.root, 'tmp', 'activeplaces.cookie')
+
+  SEED_DATA_DIR             = File.join(Rails.root, 'data')
+  DOWNLOAD_DATA_DIR         = ENV['DATA_DIR'] || File.join(Rails.root, 'data', 'downloads')
+  SEARCH_FORM_HTML_FILE     = File.join(DOWNLOAD_DATA_DIR, 'search-form.html')
+  SEARCH_RESULTS_DIRECTORY  = File.join(DOWNLOAD_DATA_DIR, 'search-results')
+  SITE_DETAILS_DIRECTORY    = File.join(DOWNLOAD_DATA_DIR, 'site-details')
   
-  SEARCH_FORM_HTML_FILE     = File.join(Rails.root, 'data', 'search-form.html')
-  SEARCH_RESULTS_DIRECTORY  = File.join(Rails.root, 'data', 'search-results')
-  SITE_DETAILS_DIRECTORY    = File.join(Rails.root, 'data', 'site-details')
+  FileUtils.mkdir_p DOWNLOAD_DATA_DIR
+  FileUtils.mkdir_p SEARCH_RESULTS_DIRECTORY
+  FileUtils.mkdir_p SITE_DETAILS_DIRECTORY
   
   def curl(url)
     unless File.exists?(ACTIVE_PLACES_COOKIE_FILE) # Get the cookie if we don't have it yet
