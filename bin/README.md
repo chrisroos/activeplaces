@@ -7,3 +7,18 @@ This will download the search results page for *all* of the UK Postcode outcodes
 Optionally download the search results page for specific UK Postcodes, using something like:
 
     $ DATA_DIR=~/path/to/data POSTCODES=E1 ruby bin/download-search-results.rb
+
+## Create the facility types in the database
+
+    $ DATA_DIR=~/path/to/data ruby bin/download-search-form.rb
+    $ DATA_DIR=~/path/to/data ruby bin/create-facility-types.rb
+
+## Create the sites in the database, by extracting data from the downloaded search results
+
+This will create a site in the database for each of the sites in the search result pages downloaded in step 1.
+
+    $ DATA_DIR=~/path/to/data ruby bin/create-sites-from-search-results.rb
+
+To create sites for specific postcodes, use:
+
+    $ DATA_DIR=~/path/to/data POSTCODES=E1 ruby bin/create-sites-from-search-results.rb

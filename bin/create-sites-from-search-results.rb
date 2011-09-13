@@ -2,19 +2,16 @@ require File.join(File.dirname(__FILE__), '..', 'config', 'environment')
 require File.join(File.dirname(__FILE__), 'active_places_helper')
 include ActivePlacesHelper
 
-# THIS IS JUST HERE AS A SHORT CUT IN AN ATTEMPT TO FILL IN THE SEARCH RESULTS THAT I MISSED FIRST TIME ROUND
-interesting_postcodes = []
-File.open(File.join(Rails.root, 'data', 'uk-postcode-outcodes.csv')) do |file|
-  file.each_with_index do |line, index|
-    next if index == 0 # ignore the first line
-    interesting_postcodes << line.split(',').first
-  end
+if postcodes = ENV['POSTCODES']
+  postcodes = postcodes.split(',')
+else
+  postcodes = []
 end
 
 Dir[File.join(SEARCH_RESULTS_DIRECTORY, '*.html')].each_with_index do |search_result_html_file, index|
   
   postcode = search_result_html_file[/results-(.*)-all/, 1]
-  next unless interesting_postcodes.include?(postcode)
+  next unless postcodes.empty? || postcodes.include?(postcode)
   puts "*** Postcode: #{postcode}"
 
   html = File.read(search_result_html_file)
@@ -29,6 +26,9 @@ Dir[File.join(SEARCH_RESULTS_DIRECTORY, '*.html')].each_with_index do |search_re
     distance = (table/'tr:nth(1) td:nth(1)').inner_text.strip
     telephone = (table/'tr:nth(3) td:nth(0)').inner_text.sub(/^Tel:/, '').strip
     address = (table/'tr:nth(4) td:nth(0)').inner_text.strip
+    address, postcode = address.split(',')
+    address = 'UNKNOWN' if address.blank?
+    postcode = 'UNKNOWN' if postcode.blank?
     site_link = (table/'tr:nth(4) td:nth(1) a:nth(0)').first['href']
     ward_id = Integer(site_link[/wardId=(\d+)/, 1])
   
@@ -37,6 +37,7 @@ Dir[File.join(SEARCH_RESULTS_DIRECTORY, '*.html')].each_with_index do |search_re
       'name' => name,
       'telephone' => telephone.blank? ? 'NA' : telephone,
       'address' => address,
+      'postcode' => postcode,
       'ward_id' => ward_id
     }
   
@@ -47,6 +48,7 @@ Dir[File.join(SEARCH_RESULTS_DIRECTORY, '*.html')].each_with_index do |search_re
         'name' => existing_site.attributes['name'],
         'telephone' => existing_site.attributes['telephone'],
         'address' => existing_site.attributes['address'],
+        'postcode' => existing_site.attributes['postcode'],
         'ward_id' => existing_site.attributes['ward_id']
       }
       unless existing_attrs == attrs

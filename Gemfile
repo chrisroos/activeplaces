@@ -7,4 +7,4 @@ gem 'mysql'
 gem 'haml', '2.0.9'
 
 gem 'andre-geokit', :require => 'geokit'
-gem 'hpricot'
+gem 'hpricot', '0.6.164'
