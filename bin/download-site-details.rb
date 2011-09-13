@@ -4,7 +4,7 @@ include ActivePlacesHelper
 
 facility_types = FacilityType.find(:all).inject({}) { |hash, facility_type| hash[facility_type.id] = facility_type.filename_friendly_name; hash }
 
-Site.find(:all, :select => 'id', :conditions => 'date(created_at) = "2009-03-07"').each do |site|
+Site.find(:all, :select => 'id').each do |site|
   site_id = site.id
   
   site_overview_html_file = File.join(SITE_DETAILS_DIRECTORY, "site-#{site_id}.html")
