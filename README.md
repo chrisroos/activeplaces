@@ -59,6 +59,10 @@ This will create facilities and sub types as required.
 
     $ ruby bin/geocode-postcodes.rb
 
+## Exporting the data as KML
+
+    $ ruby bin/generate-kml.rb
+
 ## Useful notes about the structure of Active Places
 
 I use the low graphics/text versions as they're easier to parse.
