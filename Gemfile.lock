@@ -12,6 +12,8 @@ GEM
       activesupport (= 2.2.2)
     activesupport (2.2.2)
     andre-geokit (1.5.0)
+    graticule (0.2.8)
+      activesupport
     haml (2.0.9)
     hpricot (0.6.164)
     mysql (2.8.1)
@@ -29,6 +31,7 @@ PLATFORMS
 
 DEPENDENCIES
   andre-geokit
+  graticule (= 0.2.8)
   haml (= 2.0.9)
   hpricot (= 0.6.164)
   mysql

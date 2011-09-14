@@ -19,5 +19,5 @@ Site.find(:all, :conditions => 'latitude is null').each_with_index do |site, ind
   end
   
   p [index, site.postcode, lat, lng]
-  # sleep 0.5
+  sleep 0.5
 end

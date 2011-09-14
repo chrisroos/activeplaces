@@ -32,3 +32,7 @@ To create sites for specific postcodes, use:
 This will create facilities and sub types as required.
 
     $ ruby bin/update_access_information.rb ~/path/to/site-data
+
+## Step 6. Geocode the sites in the database
+
+    $ ruby bin/geocode-postcodes.rb
