@@ -6,6 +6,8 @@ This is made up of three (unnecessarily) tightly coupled components.  A scraper 
 
 * 9th Mar 2009 - I wrote about [what we achieved at Rewired State](http://chrisroos.co.uk/blog/2009-03-09-hack-the-government-day-rewired-state).
 
+* 7th Mar 2009 - James Andrews hosted the Rails app publicly at [activeplaces.jamesandre.ws](http://activeplaces.jamesandre.ws/)
+
 * 7th Mar 2009 - We moved the repository to git (losing previous revision history) and pushed it to [James Andrews' github account](https://github.com/ja/activeplaces).
 
 * 7th Mar 2009 - [James Adam](http://interblah.net/), [James Andrews](http://jamesandre.ws/) and [Tom Taylor](http://tomtaylor.co.uk/) helped me take the data that I'd scraped and present it in a basic web interface.
