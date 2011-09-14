@@ -56,3 +56,46 @@ This will create facilities and sub types as required.
 ### Step 6. Geocode the sites in the database
 
     $ ruby bin/geocode-postcodes.rb
+
+## Useful notes about the structure of Active Places
+
+I use the low graphics/text versions as they're easier to parse.
+
+### Index page
+
+    http://activeplaces.com/Index_lowgraphic.asp
+
+### Search form
+
+    http://activeplaces.com/FindNearest/FindNearest_LowGraphic.asp
+
+### Search results page
+
+    http://activeplaces.com/FindNearest/SearchResults_LowGraphic.asp?qsPostCode=ct11%200at&qsFacTyp=7&qsFacSubTyp=ALL&qsDistance=5&qsX=undefined&qsY=undefined&qsSearchFlag=2&qsDisablityExists=&qsMgmtId=&qsOrgId=&qsReFurbOp=&qsReFurb=&qsYearBuiltOP=&qsYearBuilt=&qsChngRooms=&qsOpenTime=&qsWeek=&qsClick=false&qsflgAdvQ=false&qsSearchCri=&qsSearchSum=
+
+But, I only actually need
+
+    http://activeplaces.com/FindNearest/SearchResults_LowGraphic.asp?qsPostCode=ct11%200at&qsFacTyp=7&qsFacSubTyp=ALL&qsDistance=5
+
+### Expanded search result (with link to site info page)
+
+    http://activeplaces.com/SiteInfo/SiteInfo_LowGraphics.asp?SiteId=1004549&wardId=118265;
+
+But, I only actually need
+
+    http://activeplaces.com/SiteInfo/SiteInfo_LowGraphics.asp?SiteId=1004549
+
+### Site info page
+
+    http://activeplaces.com/SiteInfo/moreInfo_lowgraphic.asp?SiteId=1004549&strSiteName=RAMSGATE+POOL&strWardName=&strLocalAuth=&strSiteAddress=Newington+Road%2C+%3Cbr%3ERamsgate%2DCT11+0QX&x=0&y=0
+
+But, I only actually need
+
+    # NOTE - If you don't supply the site name then it won't appear in the page
+    http://activeplaces.com/SiteInfo/moreInfo_lowgraphic.asp?SiteId=1004549&strSiteName=RAMSGATE+POOL
+
+### Facilities info page
+
+Each site info page contains iframes that link to the facilities available, so Ramsgate Pool (for example) has two iframes - one for the gym and one for the pool.  The address of these is:
+
+    http://activeplaces.com/SiteInfo/FacilityType.asp?graphic=low&SiteId=1004549&FacilityTypeId=2
