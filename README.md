@@ -1,6 +1,3 @@
-Active Places
-=============
-
 A @rewiredstate project. http://rewiredstate.org
 
 Worked on by Chris Roos, James Adam, James Andrews and Tom Taylor.
