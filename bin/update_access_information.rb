@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
-require 'hpricot'
 require File.join(File.dirname(__FILE__), *%w[.. config environment.rb])
+require 'hpricot'
 
 if ARGV.empty?
-  puts "Usage: update_access_information <directory of files> [<number to start at>]"
+  puts "Usage: update_access_information <directory of site files> [<number to start at>]"
   exit(-1)
 end
 

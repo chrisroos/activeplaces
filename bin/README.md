@@ -26,3 +26,9 @@ To create sites for specific postcodes, use:
 ## Step 4. Download site details for each of the sites created in step 3.
 
     $ DATA_DIR=~/path/to/data ruby bin/download-site-details.rb
+
+## Step 5. Create facilities for each of the sites downloaded in Step 4.
+
+This will create facilities and sub types as required.
+
+    $ ruby bin/update_access_information.rb ~/path/to/site-data

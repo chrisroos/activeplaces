@@ -5,5 +5,3 @@
 * extract-data-from-site-overview.rb
 * extract-data-from-site-swimming-pool.rb
 * geocode-postcodes.rb
-* populate-site-and-facility-join-table.rb
-* update_access_information.rb
