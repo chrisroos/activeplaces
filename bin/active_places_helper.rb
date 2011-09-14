@@ -7,7 +7,6 @@ module ActivePlacesHelper
 
   SEED_DATA_DIR             = File.join(Rails.root, 'data')
   DOWNLOAD_DATA_DIR         = ENV['DATA_DIR'] || File.join(Rails.root, 'data', 'downloads')
-  CSV_DATA_DIR              = File.join(Rails.root, 'data', 'csv')
   SEARCH_FORM_HTML_FILE     = File.join(DOWNLOAD_DATA_DIR, 'search-form.html')
   SEARCH_RESULTS_DIRECTORY  = File.join(DOWNLOAD_DATA_DIR, 'search-results')
   SITE_DETAILS_DIRECTORY    = File.join(DOWNLOAD_DATA_DIR, 'site-details')
