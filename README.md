@@ -18,6 +18,8 @@ This is made up of three (unnecessarily) tightly coupled components.  A scraper 
 
 ## Importing data from Active Places
 
+*NOTE* There's a database dump (data/2009-03-07-activeplaces-development.sql) that was taken at the end of rewired state.  It includes all the geocoded sites and their facilities.  The one thing it doesn't include is any subtypes but they're not currently exposed through the web interface anyway.
+
 ### Step 1. Perform an Active Places search for each of the UK Postcode outcodes
 
 This will download the search results page for *all* of the UK Postcode outcodes, into the /path/to/data/search-results directory.
